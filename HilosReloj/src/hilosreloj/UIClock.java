@@ -1,4 +1,5 @@
 
+import hilosreloj.ThreadChangeColor;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -30,6 +31,7 @@ public class UIClock extends JFrame implements ActionListener {
 	private JLabel labelFlechaIz;
 	private JLabel labelFlechaDer;
 	private ThreadClock threadClock;
+        private ThreadChangeColor threadColor;
 
 
 	/**
@@ -107,8 +109,10 @@ public class UIClock extends JFrame implements ActionListener {
 	private void start() {
 		
 		threadClock  = new ThreadClock(labelClock, "Counter clock");
-
+                
 		threadClock.start();
+                threadColor = new ThreadChangeColor(labelFlechaDer, labelFlechaIz);
+                threadColor.start();
 					
 		btnStart.setEnabled(false);
 		btnStop.setEnabled(true);
@@ -118,7 +122,8 @@ public class UIClock extends JFrame implements ActionListener {
 
 	private void stop() {
 
-		threadClock.stop();
+		threadClock.stop();               
+                threadColor.stop();
 		threadClock.initialize();
 		btnStart.setEnabled(true);
 		btnStop.setEnabled(false);
