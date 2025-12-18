@@ -17,13 +17,13 @@ import java.net.Socket;
 public class Servidor {
     private final int PUERTO = 5000;
     private Contador contadorClientes = new Contador();
-    private final int MAX_CLIENTES = 3;
+    private final int max_clientes = 3;
     
     public void iniciar() {
         try (ServerSocket servidor = new ServerSocket(PUERTO)) {
             System.out.println("Servidor iniciado. Esperando clientes...");
             
-            while (contadorClientes.getContador() < MAX_CLIENTES) {
+            while (contadorClientes.getContador() < max_clientes) {
                 try (Socket cliente = servidor.accept();
                      ObjectOutputStream salida = new ObjectOutputStream(cliente.getOutputStream());
                      ObjectInputStream entrada = new ObjectInputStream(cliente.getInputStream())) {
@@ -37,7 +37,7 @@ public class Servidor {
                 }
             }
             
-            System.out.println("Se ha alcanzado el máximo de " + MAX_CLIENTES + " clientes.");
+            System.out.println("Se ha alcanzado el máximo de " + max_clientes + " clientes.");
             
         } catch (Exception e) {
             System.out.println("Error en el servidor: " + e.getMessage());
