@@ -1,0 +1,8 @@
+[ {
+  "id" : 1,
+  "firstName" : "Anuska",
+  "lastName" : "García",
+  "position" : "Desarrolladora Backend",
+  "salary" : 32000.0,
+  "hireDate" : [ 2025, 11, 27 ]
+} ]
