@@ -103,10 +103,10 @@ public class AlumnoClient {
     }
     
     // Actualizar alumno 
-    public Alumno updateAlumno(Alumno alumno) {
+    public Alumno updateAlumno(int id, Alumno alumno) {
         try {
             return webClient.put()
-                    .uri("/alumnos/actualizar")
+                    .uri("/alumnos/actualizar/{id}", id)
                     .bodyValue(alumno)
                     .retrieve()
                     .bodyToMono(Alumno.class)

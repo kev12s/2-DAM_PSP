@@ -91,15 +91,15 @@ public class AlumnoController {
 		return ResponseEntity.status(500).body(false);
 	}
 
-	@PutMapping("/actualizar")
-	public ResponseEntity<Alumno> modificarAlumno(@RequestBody Alumno alumno){
+	@PutMapping("/actualizar/{id}")
+	public ResponseEntity<Alumno> modificarAlumno(@PathVariable int id, @RequestBody Alumno alumno){
 
 		if(alumno.getNombre() == null || alumno.getNombre().isEmpty() || 
 				alumno.getCurso() == null || alumno.getCurso().isEmpty()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 
-		boolean creado = alumnoService.actualizarAlumno(alumno);
+		boolean creado = alumnoService.actualizarAlumno(id, alumno);
 
 		if (creado) {
 			return ResponseEntity.status(200).body(alumno);

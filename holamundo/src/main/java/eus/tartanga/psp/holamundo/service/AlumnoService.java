@@ -107,12 +107,12 @@ public class AlumnoService {
 	}
 
 	//actualizar
-	public boolean actualizarAlumno(Alumno alumnoModificado) {
+	public boolean actualizarAlumno(int id, Alumno alumnoModificado) {
 
 		try {
-			int posicionArray = alumnoModificado.getId()-1;
+			//int posicionArray = alumnoModificado.getId()-1;
 
-			alumnos.set(posicionArray, alumnoModificado);
+			alumnos.set(id-1, alumnoModificado);
 			actualizarJson();
 			return true;
 

@@ -177,7 +177,7 @@ public class Main {
             if (curso.isEmpty()) curso = existente.getCurso();
             
             Alumno actualizado = new Alumno(id, nombre, curso);
-            Alumno resultado = cliente.updateAlumno(actualizado);
+            Alumno resultado = cliente.updateAlumno(id, actualizado);
             
             if (resultado != null) {
                 System.out.println("Alumno actualizado: " + resultado);
